@@ -5,4 +5,7 @@ arr = ArrayDS(array_size)
 
 arr.insert(10)
 arr.insert(22)
-arr.traverse()
+arr.insert(99)
+print(arr)
+arr.delete(22)
+print(arr)

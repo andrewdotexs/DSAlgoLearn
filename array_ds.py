@@ -25,3 +25,6 @@ class ArrayDS(object):
     def traverse(self, fn=print):
         for j in range(self.__nItems):
             fn(self.__a[j])
+
+    def __str__(self):
+        return f"Elementi: [{','.join([str(t) for t in self.__a])}]"

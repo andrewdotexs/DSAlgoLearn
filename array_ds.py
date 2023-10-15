@@ -3,21 +3,37 @@ class ArrayDS(object):
         self.__a = [None] * initSize
         self.__nItems = 0
 
+    def __len__(self):
+        return self.__nItems
+    
+    def get(self, n):
+        if 0 <= n and n < self.__nItems:
+            return self.__a[n]
+        
+    def set(self, n, value):
+        if 0 <= n and n < self.__nItems:
+            self.__a[n] = value
+
     def insert(self, item):
         self.__a[self.__nItems] = item
         self.__nItems += 1
 
-    def search(self, item):
+    def find(self, item):
         for j in range(self.__nItems):
-            if (r := self.__a[j]) == item:
-                return r
+            if self.__a[j] == item:
+                return j
+            
+        return -1
+
+    def search(self, item):
+        return self.get(self.find(item))
             
     def delete(self, item):
         for j in range(self.__nItems):
-            if (r := self.__a[j]) == item:
+            if self.__a[j] == item:
+                self.__nItems -= 1
                 for k in range(j, self.__nItems):
                     self.__a[k] = self.__a[k + 1]
-                self.__nItems -= 1
                 return True
             
         return False
@@ -27,4 +43,4 @@ class ArrayDS(object):
             fn(self.__a[j])
 
     def __str__(self):
-        return f"Elementi: [{','.join([str(t) for t in self.__a])}]"
+        return f"Elementi: [{','.join([str(t) for t in self.__a if t is not None])}]"

@@ -1,15 +1,40 @@
-from array_ds import ArrayDS
-from ordered_array_ds import OrderedArrayDS
+from ordered_record_array_ds import OrderedRecordArrayDS
 
-array_size = 10
-arr = OrderedArrayDS(array_size)
 
-arr.insert(10)
-arr.insert(22)
-arr.insert(99)
-arr.insert(79)
-arr.insert(43)
-arr.insert(10)
-print(arr)
-arr.delete(22)
-print(arr)
+def snd(x):
+    x[1]
+
+maxSize = 10
+arr = OrderedRecordArrayDS(maxSize, snd)
+
+for rec in [
+    ('a', 3.1),
+    ('b', 7.5),
+    ('c', 6.0),
+    ('d', 3.1),
+    ('e', 1.4),
+    ('f', -1.2),
+    ('g', 0.0),
+    ('h', 7.5),
+    ('i', 7.5),
+    ('j', 6.0)
+]:
+    arr.insert(rec)
+
+print("Array containing", len(arr), "items:\n", arr)
+
+for rec in [
+    ('c', 6.0),
+    ('g', 0.0),
+    ('g', 0.0),
+    ('b', 7.5),
+    ('i', 7.5)
+]:
+    print("Deleting", rec, "returns", arr.delete(rec))
+
+print("Array after deletions has", len(arr), "items:\n", arr)
+
+for key in [4.4, 6.0, 7.5]:
+    print("find(", key, ") returns", arr.find(key), 
+          "and get(", arr.find(key), ") returns",
+          arr.get(arr.find(key)))

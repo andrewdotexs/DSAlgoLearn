@@ -1,7 +1,8 @@
 from array_ds import ArrayDS
+from ordered_array_ds import OrderedArrayDS
 
 array_size = 10
-arr = ArrayDS(array_size)
+arr = OrderedArrayDS(array_size)
 
 arr.insert(10)
 arr.insert(22)
